@@ -1,0 +1,15 @@
+Source: zabbix-agent2
+Section: admin
+Priority: extra
+Maintainer: Viste <vistee@prortonmail.com>
+Build-Depends: debhelper (>= 9), dh-systemd
+Standards-Version: 5.4.12
+
+Package: zabbix-agent2
+Architecture: all
+Depends: libssl-dev,
+         ${misc:Depends}
+Description: Ubuntu zabbix-agent2 Installer
+ Ubuntu zabbix-agent2 Installer provides an extremely simple way to
+ install, deploy and scale an zabbix-agent2 on top of Ubuntu server.
+ Deploy onto a single system for testing, or deploy onto a prod of any size.

@@ -1,0 +1,20 @@
+FROM ubuntu:16.04
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update \
+    && apt-get install -y git curl unzip autoconf libpcre++-dev libperl5.22 \
+                zlib1g-dev libssl-dev software-properties-common libssl-dev wget perl-modules-5.22 \
+                build-essential binutils lintian debhelper dh-make devscripts dh-systemd libcurl4-openssl-dev
+
+ADD build_zbx.bash build.bash
+ADD rules rules
+ADD control control
+ADD zabbix-agent2.dirs zabbix-agent2.dirs
+ADD zabbix-agent2.logrotate zabbix-agent2.logrotate
+ADD zabbix-agent2.postinst zabbix-agent2.postinst
+ADD zabbix-agent2.postrm zabbix-agent2.postrm
+ADD zabbix-agent2.preinst zabbix-agent2.preinst
+ADD zabbix-agent2.prerm zabbix-agent2.prerm
+ADD zabbix-agent2.service zabbix-agent2.service
+CMD /build.bash

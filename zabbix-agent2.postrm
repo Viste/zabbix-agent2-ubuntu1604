@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+
+#DEBHELPER#
+
+# Manual init script handling
+if [ -d /run/systemd/system ]; then
+	deb-systemd-invoke stop zabbix-agent2.service >/dev/null || true
+elif [ -x "/etc/init.d/zabbix-agent2" ] || [ -e "/etc/init/zabbix-agent2.conf" ]; then
+	invoke-rc.d zabbix-agent2 stop || true
+fi
+
+exit 0
